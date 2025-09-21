@@ -1,0 +1,27 @@
+# Project setup: pip install -e .
+
+[build-system]
+requires = ["setuptools>=42", "wheel", "Cython>=3.0", "build"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lingdist"
+version = "0.1.0"
+description = "Linguistic distance functions. Compare two strings of text with language analysis algorithms"
+authors = [{name = "Steven Dindl"}]
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+# Only installed when explicitly asked for
+# e.g.: pip install -e .[dev]
+[project.optional-dependencies]
+dev = ["pandas", "ipykernel"]
+
+[tool.setuptools]
+packages = ["lingdist"]

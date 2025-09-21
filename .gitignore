@@ -1,0 +1,13 @@
+venv/
+
+*.o
+*.so
+*.pyd
+*.dll
+*.dylib
+build/
+dist/
+*.egg-info/
+__pycache__/
+
+.vscode/
