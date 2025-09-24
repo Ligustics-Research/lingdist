@@ -6,14 +6,14 @@
 /**
  * 
  */
-int ortho_lev_dist(char* str) {
+int ortho_lev_dist_(char* str) {
 	return 1;
 }
 
 /**
  * 
  */
-int phono_lev_dist(char* str) {
+int phono_lev_dist_(char* str) {
 	return 2;
 }
 
@@ -24,7 +24,7 @@ int phono_lev_dist(char* str) {
  * https://www.geeksforgeeks.org/c/length-of-array-in-c/ 
  * https://www.geeksforgeeks.org/c/macros-and-its-types-in-c-cpp/ 
  */
-int levenshtein_distance(const char* word1, const char* word2) {
+double levenshtein_distance_(const char* word1, const char* word2, const bool normalized) {
 
 	// Debug print
 	printf("word1: [%s]\n", word1);
@@ -82,7 +82,7 @@ int levenshtein_distance(const char* word1, const char* word2) {
 		currRow = tmp;
 
 		// Debug loop to print elements of row
-		for(size_t i = 0; i < strlen(word1); i++) {
+		for(size_t i = 0; i < n; i++) {
 			if(i==n) {
 				printf("%d\n", currRow[i]);
 			} else {
@@ -92,10 +92,16 @@ int levenshtein_distance(const char* word1, const char* word2) {
 
 		printf("\n");
 	}
+	int distance = prevRow[n];
 
 	// Debug print
-	printf("Distance: [%d]\n", prevRow[n]);
+	printf("Distance: [%d]\n", distance);
+	printf("Norm calc: 1 - %d / MAX2(%ld,%ld) (max=%ld)\n", distance, n, m, MAX2(n,m));
 
-	// Return final elem in last row
-	return prevRow[n];
+	// If normalized return normalized calulcation
+	// (divide the lev dist by the number of letters in 
+	// the longest string and subtracting the result from one)
+	if(normalized) return 1.0 - (distance / (double)MAX2(n,m));
+
+	return distance;
 }

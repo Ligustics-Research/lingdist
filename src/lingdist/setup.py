@@ -6,8 +6,8 @@ from Cython.Build import cythonize
 extensions = [
     Extension(
         "lingdist",
-        sources=["lingdist.pyx", "linglib.c"], 
-        include_dirs=["."],  
+        sources=["lingdist.pyx", "lib/linglib.c"], 
+        include_dirs=[".", "lib"]  
     )
 ]
 

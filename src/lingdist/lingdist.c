@@ -4,15 +4,16 @@
 {
     "distutils": {
         "depends": [
-            "linglib.h"
+            "lib/linglib.h"
         ],
         "include_dirs": [
-            "."
+            ".",
+            "lib"
         ],
         "name": "lingdist",
         "sources": [
             "lingdist.pyx",
-            "linglib.c"
+            "lib/linglib.c"
         ]
     },
     "module_name": "lingdist"
@@ -1137,7 +1138,7 @@ static CYTHON_INLINE float __PYX_NAN() {
 #define __PYX_HAVE__lingdist
 #define __PYX_HAVE_API__lingdist
 /* Early includes */
-#include "linglib.h"
+#include "lib/linglib.h"
 #ifdef _OPENMP
 #include <omp.h>
 #endif /* _OPENMP */
@@ -2016,6 +2017,23 @@ static void __pyx_insert_code_object(int code_line, __Pyx_CachedCodeObjectType* 
 static void __Pyx_AddTraceback(const char *funcname, int c_line,
                                int py_line, const char *filename);
 
+/* FormatTypeName.proto */
+#if CYTHON_COMPILING_IN_LIMITED_API
+typedef PyObject *__Pyx_TypeName;
+#define __Pyx_FMT_TYPENAME "%U"
+#define __Pyx_DECREF_TypeName(obj) Py_XDECREF(obj)
+#if __PYX_LIMITED_VERSION_HEX >= 0x030d0000
+#define __Pyx_PyType_GetFullyQualifiedName PyType_GetFullyQualifiedName
+#else
+static __Pyx_TypeName __Pyx_PyType_GetFullyQualifiedName(PyTypeObject* tp);
+#endif
+#else  // !LIMITED_API
+typedef const char *__Pyx_TypeName;
+#define __Pyx_FMT_TYPENAME "%.200s"
+#define __Pyx_PyType_GetFullyQualifiedName(tp) ((tp)->tp_name)
+#define __Pyx_DECREF_TypeName(obj)
+#endif
+
 /* GCCDiagnostics.proto */
 #if !defined(__INTEL_COMPILER) && defined(__GNUC__) && (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 6))
 #define __Pyx_HAS_GCC_DIAGNOSTIC
@@ -2037,26 +2055,6 @@ static int __Pyx_VectorcallBuilder_AddArgStr(const char *key, PyObject *value, P
 #define __Pyx_MakeVectorcallBuilderKwds(n) __Pyx_PyDict_NewPresized(n)
 #define __Pyx_VectorcallBuilder_AddArg(key, value, builder, args, n) PyDict_SetItem(builder, key, value)
 #define __Pyx_VectorcallBuilder_AddArgStr(key, value, builder, args, n) PyDict_SetItemString(builder, key, value)
-#endif
-
-/* CIntToPy.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyLong_From_int(int value);
-
-/* FormatTypeName.proto */
-#if CYTHON_COMPILING_IN_LIMITED_API
-typedef PyObject *__Pyx_TypeName;
-#define __Pyx_FMT_TYPENAME "%U"
-#define __Pyx_DECREF_TypeName(obj) Py_XDECREF(obj)
-#if __PYX_LIMITED_VERSION_HEX >= 0x030d0000
-#define __Pyx_PyType_GetFullyQualifiedName PyType_GetFullyQualifiedName
-#else
-static __Pyx_TypeName __Pyx_PyType_GetFullyQualifiedName(PyTypeObject* tp);
-#endif
-#else  // !LIMITED_API
-typedef const char *__Pyx_TypeName;
-#define __Pyx_FMT_TYPENAME "%.200s"
-#define __Pyx_PyType_GetFullyQualifiedName(tp) ((tp)->tp_name)
-#define __Pyx_DECREF_TypeName(obj)
 #endif
 
 /* CIntToPy.proto */
@@ -2159,38 +2157,35 @@ int __pyx_module_is_main_lingdist = 0;
 static const char __pyx_k_[] = "?";
 static const char __pyx_k_c1[] = "c1";
 static const char __pyx_k_c2[] = "c2";
+static const char __pyx_k_c3[] = "c3";
 static const char __pyx_k_e1[] = "e1";
 static const char __pyx_k_e2[] = "e2";
 static const char __pyx_k_pop[] = "pop";
 static const char __pyx_k_str[] = "str";
-static const char __pyx_k_None[] = "None";
+static const char __pyx_k_bool[] = "bool";
 static const char __pyx_k_func[] = "__func__";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
 static const char __pyx_k_test[] = "__test__";
-static const char __pyx_k_word[] = "word";
 static const char __pyx_k_word1[] = "word1";
 static const char __pyx_k_word2[] = "word2";
-static const char __pyx_k_HA_WAQ[] = "\320\000\034\230H\240A\330\004\031\230\024\230W\240A\240Q\330\004\030\230\001\330\004\013\210>\230\021\230!";
-static const char __pyx_k_c_name[] = "c_name";
+static const char __pyx_k_double[] = "double";
 static const char __pyx_k_module[] = "__module__";
 static const char __pyx_k_return[] = "return";
-static const char __pyx_k_encoded[] = "encoded";
 static const char __pyx_k_add_note[] = "add_note";
 static const char __pyx_k_lingdist[] = "lingdist";
 static const char __pyx_k_qualname[] = "__qualname__";
 static const char __pyx_k_set_name[] = "__set_name__";
-static const char __pyx_k_xq_E_E_q_A[] = "\320\000#\240<\250x\260q\330\004\024\220E\230\027\240\001\240\021\330\004\024\220E\230\027\240\001\240\021\330\004\032\230!\330\004\032\230!\330\004\013\320\013\037\230q\240\004\240A";
+static const char __pyx_k_Ya_E_E_1_T[] = "\320\000 \240\014\320,=\270Y\300a\330\004\024\220E\230\027\240\001\240\021\330\004\024\220E\230\027\240\001\240\021\330\004\023\2201\330\004\032\230!\330\004\032\230!\340\004\013\320\013 \240\001\240\024\240T\250\021";
+static const char __pyx_k_normalized[] = "normalized";
 static const char __pyx_k_is_coroutine[] = "_is_coroutine";
 static const char __pyx_k_lingdist_pyx[] = "lingdist.pyx";
-static const char __pyx_k_py_ortho_lev_dist[] = "py_ortho_lev_dist";
 static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
-static const char __pyx_k_py_levenshtein_distance[] = "py_levenshtein_distance";
+static const char __pyx_k_levenshtein_distance[] = "levenshtein_distance";
 static const char __pyx_k_Note_that_Cython_is_deliberately[] = "Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.";
 /* #### Code section: decls ### */
-static PyObject *__pyx_pf_8lingdist_py_ortho_lev_dist(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_word); /* proto */
-static PyObject *__pyx_pf_8lingdist_2py_levenshtein_distance(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_word1, PyObject *__pyx_v_word2); /* proto */
+static PyObject *__pyx_pf_8lingdist_levenshtein_distance(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_word1, PyObject *__pyx_v_word2, PyObject *__pyx_v_normalized); /* proto */
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
 /* SmallCodeConfig */
@@ -2230,8 +2225,8 @@ typedef struct {
   PyTypeObject *__pyx_CoroutineType;
   #endif
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_pop;
-  PyObject *__pyx_codeobj_tab[2];
-  PyObject *__pyx_string_tab[30];
+  PyObject *__pyx_codeobj_tab[1];
+  PyObject *__pyx_string_tab[29];
 /* #### Code section: module_state_contents ### */
 /* CommonTypesMetaclass.module_state_decls */
 PyTypeObject *__pyx_CommonTypesMetaclassType;
@@ -2270,35 +2265,34 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #endif
 /* #### Code section: constant_name_defines ### */
 #define __pyx_kp_u_ __pyx_string_tab[0]
-#define __pyx_n_u_None __pyx_string_tab[1]
-#define __pyx_kp_u_Note_that_Cython_is_deliberately __pyx_string_tab[2]
-#define __pyx_kp_u_add_note __pyx_string_tab[3]
-#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[4]
+#define __pyx_kp_u_Note_that_Cython_is_deliberately __pyx_string_tab[1]
+#define __pyx_kp_u_add_note __pyx_string_tab[2]
+#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[3]
+#define __pyx_n_u_bool __pyx_string_tab[4]
 #define __pyx_n_u_c1 __pyx_string_tab[5]
 #define __pyx_n_u_c2 __pyx_string_tab[6]
-#define __pyx_n_u_c_name __pyx_string_tab[7]
+#define __pyx_n_u_c3 __pyx_string_tab[7]
 #define __pyx_n_u_cline_in_traceback __pyx_string_tab[8]
-#define __pyx_n_u_e1 __pyx_string_tab[9]
-#define __pyx_n_u_e2 __pyx_string_tab[10]
-#define __pyx_n_u_encoded __pyx_string_tab[11]
+#define __pyx_n_u_double __pyx_string_tab[9]
+#define __pyx_n_u_e1 __pyx_string_tab[10]
+#define __pyx_n_u_e2 __pyx_string_tab[11]
 #define __pyx_n_u_func __pyx_string_tab[12]
 #define __pyx_n_u_is_coroutine __pyx_string_tab[13]
-#define __pyx_n_u_lingdist __pyx_string_tab[14]
-#define __pyx_kp_u_lingdist_pyx __pyx_string_tab[15]
-#define __pyx_n_u_main __pyx_string_tab[16]
-#define __pyx_n_u_module __pyx_string_tab[17]
-#define __pyx_n_u_name __pyx_string_tab[18]
-#define __pyx_n_u_pop __pyx_string_tab[19]
-#define __pyx_n_u_py_levenshtein_distance __pyx_string_tab[20]
-#define __pyx_n_u_py_ortho_lev_dist __pyx_string_tab[21]
+#define __pyx_n_u_levenshtein_distance __pyx_string_tab[14]
+#define __pyx_n_u_lingdist __pyx_string_tab[15]
+#define __pyx_kp_u_lingdist_pyx __pyx_string_tab[16]
+#define __pyx_n_u_main __pyx_string_tab[17]
+#define __pyx_n_u_module __pyx_string_tab[18]
+#define __pyx_n_u_name __pyx_string_tab[19]
+#define __pyx_n_u_normalized __pyx_string_tab[20]
+#define __pyx_n_u_pop __pyx_string_tab[21]
 #define __pyx_n_u_qualname __pyx_string_tab[22]
 #define __pyx_n_u_return __pyx_string_tab[23]
 #define __pyx_n_u_set_name __pyx_string_tab[24]
 #define __pyx_n_u_str __pyx_string_tab[25]
 #define __pyx_n_u_test __pyx_string_tab[26]
-#define __pyx_n_u_word __pyx_string_tab[27]
-#define __pyx_n_u_word1 __pyx_string_tab[28]
-#define __pyx_n_u_word2 __pyx_string_tab[29]
+#define __pyx_n_u_word1 __pyx_string_tab[27]
+#define __pyx_n_u_word2 __pyx_string_tab[28]
 /* #### Code section: module_state_clear ### */
 #if CYTHON_USE_MODULE_STATE
 static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
@@ -2319,8 +2313,8 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   __Pyx_State_RemoveModule(NULL);
   #endif
-  for (int i=0; i<2; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<30; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<1; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
+  for (int i=0; i<29; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
   return 0;
 }
 #endif
@@ -2341,202 +2335,31 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   #ifdef __Pyx_FusedFunction_USED
   Py_VISIT(traverse_module_state->__pyx_FusedFunctionType);
   #endif
-  for (int i=0; i<2; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<30; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<1; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
+  for (int i=0; i<29; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
   return 0;
 }
 #endif
 /* #### Code section: module_code ### */
 
-/* "lingdist.pyx":7
- *     int levenshtein_distance(const char* word1, const char* word2)
+/* "lingdist.pyx":6
+ *     double levenshtein_distance_(const char* word1, const char* word2, const bint normalized)
  * 
- * def py_ortho_lev_dist(word: str) -> None:             # <<<<<<<<<<<<<<
- *     cdef bytes encoded = word.encode("utf-8")
- *     cdef char* c_name = encoded
-*/
-
-/* Python wrapper */
-static PyObject *__pyx_pw_8lingdist_1py_ortho_lev_dist(PyObject *__pyx_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-); /*proto*/
-static PyMethodDef __pyx_mdef_8lingdist_1py_ortho_lev_dist = {"py_ortho_lev_dist", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8lingdist_1py_ortho_lev_dist, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_8lingdist_1py_ortho_lev_dist(PyObject *__pyx_self, 
-#if CYTHON_METH_FASTCALL
-PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
-#else
-PyObject *__pyx_args, PyObject *__pyx_kwds
-#endif
-) {
-  PyObject *__pyx_v_word = 0;
-  #if !CYTHON_METH_FASTCALL
-  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
-  #endif
-  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  PyObject* values[1] = {0};
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("py_ortho_lev_dist (wrapper)", 0);
-  #if !CYTHON_METH_FASTCALL
-  #if CYTHON_ASSUME_SAFE_SIZE
-  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
-  #else
-  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
-  #endif
-  #endif
-  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
-  {
-    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_word,0};
-    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 7, __pyx_L3_error)
-    if (__pyx_kwds_len > 0) {
-      switch (__pyx_nargs) {
-        case  1:
-        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 7, __pyx_L3_error)
-        CYTHON_FALLTHROUGH;
-        case  0: break;
-        default: goto __pyx_L5_argtuple_error;
-      }
-      const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "py_ortho_lev_dist", 0) < 0) __PYX_ERR(0, 7, __pyx_L3_error)
-      for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("py_ortho_lev_dist", 1, 1, 1, i); __PYX_ERR(0, 7, __pyx_L3_error) }
-      }
-    } else if (unlikely(__pyx_nargs != 1)) {
-      goto __pyx_L5_argtuple_error;
-    } else {
-      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 7, __pyx_L3_error)
-    }
-    __pyx_v_word = ((PyObject*)values[0]);
-  }
-  goto __pyx_L6_skip;
-  __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("py_ortho_lev_dist", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 7, __pyx_L3_error)
-  __pyx_L6_skip:;
-  goto __pyx_L4_argument_unpacking_done;
-  __pyx_L3_error:;
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  __Pyx_AddTraceback("lingdist.py_ortho_lev_dist", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __Pyx_RefNannyFinishContext();
-  return NULL;
-  __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_word), (&PyUnicode_Type), 0, "word", 2))) __PYX_ERR(0, 7, __pyx_L1_error)
-  __pyx_r = __pyx_pf_8lingdist_py_ortho_lev_dist(__pyx_self, __pyx_v_word);
-
-  /* function exit code */
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __pyx_r = NULL;
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  goto __pyx_L7_cleaned_up;
-  __pyx_L0:;
-  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
-    Py_XDECREF(values[__pyx_temp]);
-  }
-  __pyx_L7_cleaned_up:;
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_8lingdist_py_ortho_lev_dist(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_word) {
-  PyObject *__pyx_v_encoded = 0;
-  char *__pyx_v_c_name;
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  char *__pyx_t_2;
-  int __pyx_lineno = 0;
-  const char *__pyx_filename = NULL;
-  int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("py_ortho_lev_dist", 0);
-
-  /* "lingdist.pyx":8
- * 
- * def py_ortho_lev_dist(word: str) -> None:
- *     cdef bytes encoded = word.encode("utf-8")             # <<<<<<<<<<<<<<
- *     cdef char* c_name = encoded
- *     return ortho_lev_dist(c_name)
-*/
-  __pyx_t_1 = PyUnicode_AsUTF8String(__pyx_v_word); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_v_encoded = ((PyObject*)__pyx_t_1);
-  __pyx_t_1 = 0;
-
-  /* "lingdist.pyx":9
- * def py_ortho_lev_dist(word: str) -> None:
- *     cdef bytes encoded = word.encode("utf-8")
- *     cdef char* c_name = encoded             # <<<<<<<<<<<<<<
- *     return ortho_lev_dist(c_name)
- * 
-*/
-  __pyx_t_2 = __Pyx_PyBytes_AsWritableString(__pyx_v_encoded); if (unlikely((!__pyx_t_2) && PyErr_Occurred())) __PYX_ERR(0, 9, __pyx_L1_error)
-  __pyx_v_c_name = __pyx_t_2;
-
-  /* "lingdist.pyx":10
- *     cdef bytes encoded = word.encode("utf-8")
- *     cdef char* c_name = encoded
- *     return ortho_lev_dist(c_name)             # <<<<<<<<<<<<<<
- * 
- * def py_levenshtein_distance(word1: str, word2: str) -> None:
-*/
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyLong_From_int(ortho_lev_dist(__pyx_v_c_name)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* "lingdist.pyx":7
- *     int levenshtein_distance(const char* word1, const char* word2)
- * 
- * def py_ortho_lev_dist(word: str) -> None:             # <<<<<<<<<<<<<<
- *     cdef bytes encoded = word.encode("utf-8")
- *     cdef char* c_name = encoded
-*/
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("lingdist.py_ortho_lev_dist", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XDECREF(__pyx_v_encoded);
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "lingdist.pyx":12
- *     return ortho_lev_dist(c_name)
- * 
- * def py_levenshtein_distance(word1: str, word2: str) -> None:             # <<<<<<<<<<<<<<
+ * def levenshtein_distance(word1: str, word2: str, normalized: bool) -> double:             # <<<<<<<<<<<<<<
  *     cdef bytes e1 = word1.encode("utf-8")
  *     cdef bytes e2 = word2.encode("utf-8")
 */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_8lingdist_3py_levenshtein_distance(PyObject *__pyx_self, 
+static PyObject *__pyx_pw_8lingdist_1levenshtein_distance(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static PyMethodDef __pyx_mdef_8lingdist_3py_levenshtein_distance = {"py_levenshtein_distance", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8lingdist_3py_levenshtein_distance, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_8lingdist_3py_levenshtein_distance(PyObject *__pyx_self, 
+static PyMethodDef __pyx_mdef_8lingdist_1levenshtein_distance = {"levenshtein_distance", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_8lingdist_1levenshtein_distance, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_8lingdist_1levenshtein_distance(PyObject *__pyx_self, 
 #if CYTHON_METH_FASTCALL
 PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 #else
@@ -2545,17 +2368,18 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
 ) {
   PyObject *__pyx_v_word1 = 0;
   PyObject *__pyx_v_word2 = 0;
+  PyObject *__pyx_v_normalized = 0;
   #if !CYTHON_METH_FASTCALL
   CYTHON_UNUSED Py_ssize_t __pyx_nargs;
   #endif
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
-  PyObject* values[2] = {0,0};
+  PyObject* values[3] = {0,0,0};
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("py_levenshtein_distance (wrapper)", 0);
+  __Pyx_RefNannySetupContext("levenshtein_distance (wrapper)", 0);
   #if !CYTHON_METH_FASTCALL
   #if CYTHON_ASSUME_SAFE_SIZE
   __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
@@ -2565,54 +2389,61 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   #endif
   __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
   {
-    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_word1,&__pyx_mstate_global->__pyx_n_u_word2,0};
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_word1,&__pyx_mstate_global->__pyx_n_u_word2,&__pyx_mstate_global->__pyx_n_u_normalized,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 12, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 6, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
+        case  3:
+        values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 6, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
         case  2:
         values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 12, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 6, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 12, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 6, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "py_levenshtein_distance", 0) < 0) __PYX_ERR(0, 12, __pyx_L3_error)
-      for (Py_ssize_t i = __pyx_nargs; i < 2; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("py_levenshtein_distance", 1, 2, 2, i); __PYX_ERR(0, 12, __pyx_L3_error) }
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "levenshtein_distance", 0) < 0) __PYX_ERR(0, 6, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 3; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("levenshtein_distance", 1, 3, 3, i); __PYX_ERR(0, 6, __pyx_L3_error) }
       }
-    } else if (unlikely(__pyx_nargs != 2)) {
+    } else if (unlikely(__pyx_nargs != 3)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 12, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 6, __pyx_L3_error)
       values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 12, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 6, __pyx_L3_error)
+      values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 6, __pyx_L3_error)
     }
     __pyx_v_word1 = ((PyObject*)values[0]);
     __pyx_v_word2 = ((PyObject*)values[1]);
+    __pyx_v_normalized = values[2];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("py_levenshtein_distance", 1, 2, 2, __pyx_nargs); __PYX_ERR(0, 12, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("levenshtein_distance", 1, 3, 3, __pyx_nargs); __PYX_ERR(0, 6, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
   for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
     Py_XDECREF(values[__pyx_temp]);
   }
-  __Pyx_AddTraceback("lingdist.py_levenshtein_distance", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("lingdist.levenshtein_distance", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_word1), (&PyUnicode_Type), 0, "word1", 2))) __PYX_ERR(0, 12, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_word2), (&PyUnicode_Type), 0, "word2", 2))) __PYX_ERR(0, 12, __pyx_L1_error)
-  __pyx_r = __pyx_pf_8lingdist_2py_levenshtein_distance(__pyx_self, __pyx_v_word1, __pyx_v_word2);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_word1), (&PyUnicode_Type), 0, "word1", 2))) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_word2), (&PyUnicode_Type), 0, "word2", 2))) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_r = __pyx_pf_8lingdist_levenshtein_distance(__pyx_self, __pyx_v_word1, __pyx_v_word2, __pyx_v_normalized);
 
   /* function exit code */
   goto __pyx_L0;
@@ -2631,80 +2462,93 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_8lingdist_2py_levenshtein_distance(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_word1, PyObject *__pyx_v_word2) {
+static PyObject *__pyx_pf_8lingdist_levenshtein_distance(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_word1, PyObject *__pyx_v_word2, PyObject *__pyx_v_normalized) {
   PyObject *__pyx_v_e1 = 0;
   PyObject *__pyx_v_e2 = 0;
+  int __pyx_v_c3;
   char const *__pyx_v_c1;
   char const *__pyx_v_c2;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  char const *__pyx_t_2;
+  int __pyx_t_2;
   char const *__pyx_t_3;
+  char const *__pyx_t_4;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("py_levenshtein_distance", 0);
+  __Pyx_RefNannySetupContext("levenshtein_distance", 0);
 
-  /* "lingdist.pyx":13
+  /* "lingdist.pyx":7
  * 
- * def py_levenshtein_distance(word1: str, word2: str) -> None:
+ * def levenshtein_distance(word1: str, word2: str, normalized: bool) -> double:
  *     cdef bytes e1 = word1.encode("utf-8")             # <<<<<<<<<<<<<<
  *     cdef bytes e2 = word2.encode("utf-8")
- *     cdef const char* c1 = e1
+ *     cdef bint c3 = normalized
 */
-  __pyx_t_1 = PyUnicode_AsUTF8String(__pyx_v_word1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_t_1 = PyUnicode_AsUTF8String(__pyx_v_word1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 7, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_e1 = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "lingdist.pyx":14
- * def py_levenshtein_distance(word1: str, word2: str) -> None:
+  /* "lingdist.pyx":8
+ * def levenshtein_distance(word1: str, word2: str, normalized: bool) -> double:
  *     cdef bytes e1 = word1.encode("utf-8")
  *     cdef bytes e2 = word2.encode("utf-8")             # <<<<<<<<<<<<<<
+ *     cdef bint c3 = normalized
  *     cdef const char* c1 = e1
- *     cdef const char* c2 = e2
 */
-  __pyx_t_1 = PyUnicode_AsUTF8String(__pyx_v_word2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 14, __pyx_L1_error)
+  __pyx_t_1 = PyUnicode_AsUTF8String(__pyx_v_word2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_e2 = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "lingdist.pyx":15
+  /* "lingdist.pyx":9
  *     cdef bytes e1 = word1.encode("utf-8")
  *     cdef bytes e2 = word2.encode("utf-8")
+ *     cdef bint c3 = normalized             # <<<<<<<<<<<<<<
+ *     cdef const char* c1 = e1
+ *     cdef const char* c2 = e2
+*/
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_normalized); if (unlikely((__pyx_t_2 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 9, __pyx_L1_error)
+  __pyx_v_c3 = __pyx_t_2;
+
+  /* "lingdist.pyx":10
+ *     cdef bytes e2 = word2.encode("utf-8")
+ *     cdef bint c3 = normalized
  *     cdef const char* c1 = e1             # <<<<<<<<<<<<<<
  *     cdef const char* c2 = e2
- *     return levenshtein_distance(c1, c2)
+ * 
 */
-  __pyx_t_2 = __Pyx_PyBytes_AsString(__pyx_v_e1); if (unlikely((!__pyx_t_2) && PyErr_Occurred())) __PYX_ERR(0, 15, __pyx_L1_error)
-  __pyx_v_c1 = __pyx_t_2;
+  __pyx_t_3 = __Pyx_PyBytes_AsString(__pyx_v_e1); if (unlikely((!__pyx_t_3) && PyErr_Occurred())) __PYX_ERR(0, 10, __pyx_L1_error)
+  __pyx_v_c1 = __pyx_t_3;
 
-  /* "lingdist.pyx":16
- *     cdef bytes e2 = word2.encode("utf-8")
+  /* "lingdist.pyx":11
+ *     cdef bint c3 = normalized
  *     cdef const char* c1 = e1
  *     cdef const char* c2 = e2             # <<<<<<<<<<<<<<
- *     return levenshtein_distance(c1, c2)
+ * 
+ *     return levenshtein_distance_(c1, c2, c3)
 */
-  __pyx_t_3 = __Pyx_PyBytes_AsString(__pyx_v_e2); if (unlikely((!__pyx_t_3) && PyErr_Occurred())) __PYX_ERR(0, 16, __pyx_L1_error)
-  __pyx_v_c2 = __pyx_t_3;
+  __pyx_t_4 = __Pyx_PyBytes_AsString(__pyx_v_e2); if (unlikely((!__pyx_t_4) && PyErr_Occurred())) __PYX_ERR(0, 11, __pyx_L1_error)
+  __pyx_v_c2 = __pyx_t_4;
 
-  /* "lingdist.pyx":17
- *     cdef const char* c1 = e1
+  /* "lingdist.pyx":13
  *     cdef const char* c2 = e2
- *     return levenshtein_distance(c1, c2)             # <<<<<<<<<<<<<<
+ * 
+ *     return levenshtein_distance_(c1, c2, c3)             # <<<<<<<<<<<<<<
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyLong_From_int(levenshtein_distance(__pyx_v_c1, __pyx_v_c2)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(levenshtein_distance_(__pyx_v_c1, __pyx_v_c2, __pyx_v_c3)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "lingdist.pyx":12
- *     return ortho_lev_dist(c_name)
+  /* "lingdist.pyx":6
+ *     double levenshtein_distance_(const char* word1, const char* word2, const bint normalized)
  * 
- * def py_levenshtein_distance(word1: str, word2: str) -> None:             # <<<<<<<<<<<<<<
+ * def levenshtein_distance(word1: str, word2: str, normalized: bool) -> double:             # <<<<<<<<<<<<<<
  *     cdef bytes e1 = word1.encode("utf-8")
  *     cdef bytes e2 = word2.encode("utf-8")
 */
@@ -2712,7 +2556,7 @@ static PyObject *__pyx_pf_8lingdist_2py_levenshtein_distance(CYTHON_UNUSED PyObj
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("lingdist.py_levenshtein_distance", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("lingdist.levenshtein_distance", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF(__pyx_v_e1);
@@ -3087,52 +2931,35 @@ __Pyx_RefNannySetupContext("PyInit_lingdist", 0);
   (void)__Pyx_modinit_function_import_code(__pyx_mstate);
   /*--- Execution code ---*/
 
-  /* "lingdist.pyx":7
- *     int levenshtein_distance(const char* word1, const char* word2)
+  /* "lingdist.pyx":6
+ *     double levenshtein_distance_(const char* word1, const char* word2, const bint normalized)
  * 
- * def py_ortho_lev_dist(word: str) -> None:             # <<<<<<<<<<<<<<
- *     cdef bytes encoded = word.encode("utf-8")
- *     cdef char* c_name = encoded
-*/
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 7, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_word, __pyx_mstate_global->__pyx_n_u_str) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_None) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
-  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_8lingdist_1py_ortho_lev_dist, 0, __pyx_mstate_global->__pyx_n_u_py_ortho_lev_dist, NULL, __pyx_mstate_global->__pyx_n_u_lingdist, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 7, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_3, __pyx_t_2);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_py_ortho_lev_dist, __pyx_t_3) < 0) __PYX_ERR(0, 7, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-
-  /* "lingdist.pyx":12
- *     return ortho_lev_dist(c_name)
- * 
- * def py_levenshtein_distance(word1: str, word2: str) -> None:             # <<<<<<<<<<<<<<
+ * def levenshtein_distance(word1: str, word2: str, normalized: bool) -> double:             # <<<<<<<<<<<<<<
  *     cdef bytes e1 = word1.encode("utf-8")
  *     cdef bytes e2 = word2.encode("utf-8")
 */
-  __pyx_t_3 = __Pyx_PyDict_NewPresized(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 12, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  if (PyDict_SetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_word1, __pyx_mstate_global->__pyx_n_u_str) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_word2, __pyx_mstate_global->__pyx_n_u_str) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
-  if (PyDict_SetItem(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_None) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_8lingdist_3py_levenshtein_distance, 0, __pyx_mstate_global->__pyx_n_u_py_levenshtein_distance, NULL, __pyx_mstate_global->__pyx_n_u_lingdist, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyDict_NewPresized(4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_2, __pyx_t_3);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_py_levenshtein_distance, __pyx_t_2) < 0) __PYX_ERR(0, 12, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_word1, __pyx_mstate_global->__pyx_n_u_str) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_word2, __pyx_mstate_global->__pyx_n_u_str) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_normalized, __pyx_mstate_global->__pyx_n_u_bool) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_2, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_double) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_8lingdist_1levenshtein_distance, 0, __pyx_mstate_global->__pyx_n_u_levenshtein_distance, NULL, __pyx_mstate_global->__pyx_n_u_lingdist, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 6, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_3, __pyx_t_2);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_levenshtein_distance, __pyx_t_3) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
   /* "lingdist.pyx":1
  * # linglib.pyx - link from c -> python             # <<<<<<<<<<<<<<
  * 
- * cdef extern from "linglib.h":
+ * cdef extern from "lib/linglib.h":
 */
-  __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_test, __pyx_t_2) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_3 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_test, __pyx_t_3) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
   /*--- Wrapped vars code ---*/
 
@@ -3194,33 +3021,32 @@ typedef struct {
 static const char * const __pyx_string_tab_encodings[] = { 0 };
 static const __Pyx_StringTabEntry __pyx_string_tab[] = {
   {__pyx_k_, sizeof(__pyx_k_), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_ */
-  {__pyx_k_None, sizeof(__pyx_k_None), 0, 1, 1}, /* PyObject cname: __pyx_n_u_None */
   {__pyx_k_Note_that_Cython_is_deliberately, sizeof(__pyx_k_Note_that_Cython_is_deliberately), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_Note_that_Cython_is_deliberately */
   {__pyx_k_add_note, sizeof(__pyx_k_add_note), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_add_note */
   {__pyx_k_asyncio_coroutines, sizeof(__pyx_k_asyncio_coroutines), 0, 1, 1}, /* PyObject cname: __pyx_n_u_asyncio_coroutines */
+  {__pyx_k_bool, sizeof(__pyx_k_bool), 0, 1, 1}, /* PyObject cname: __pyx_n_u_bool */
   {__pyx_k_c1, sizeof(__pyx_k_c1), 0, 1, 1}, /* PyObject cname: __pyx_n_u_c1 */
   {__pyx_k_c2, sizeof(__pyx_k_c2), 0, 1, 1}, /* PyObject cname: __pyx_n_u_c2 */
-  {__pyx_k_c_name, sizeof(__pyx_k_c_name), 0, 1, 1}, /* PyObject cname: __pyx_n_u_c_name */
+  {__pyx_k_c3, sizeof(__pyx_k_c3), 0, 1, 1}, /* PyObject cname: __pyx_n_u_c3 */
   {__pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 1, 1}, /* PyObject cname: __pyx_n_u_cline_in_traceback */
+  {__pyx_k_double, sizeof(__pyx_k_double), 0, 1, 1}, /* PyObject cname: __pyx_n_u_double */
   {__pyx_k_e1, sizeof(__pyx_k_e1), 0, 1, 1}, /* PyObject cname: __pyx_n_u_e1 */
   {__pyx_k_e2, sizeof(__pyx_k_e2), 0, 1, 1}, /* PyObject cname: __pyx_n_u_e2 */
-  {__pyx_k_encoded, sizeof(__pyx_k_encoded), 0, 1, 1}, /* PyObject cname: __pyx_n_u_encoded */
   {__pyx_k_func, sizeof(__pyx_k_func), 0, 1, 1}, /* PyObject cname: __pyx_n_u_func */
   {__pyx_k_is_coroutine, sizeof(__pyx_k_is_coroutine), 0, 1, 1}, /* PyObject cname: __pyx_n_u_is_coroutine */
+  {__pyx_k_levenshtein_distance, sizeof(__pyx_k_levenshtein_distance), 0, 1, 1}, /* PyObject cname: __pyx_n_u_levenshtein_distance */
   {__pyx_k_lingdist, sizeof(__pyx_k_lingdist), 0, 1, 1}, /* PyObject cname: __pyx_n_u_lingdist */
   {__pyx_k_lingdist_pyx, sizeof(__pyx_k_lingdist_pyx), 0, 1, 0}, /* PyObject cname: __pyx_kp_u_lingdist_pyx */
   {__pyx_k_main, sizeof(__pyx_k_main), 0, 1, 1}, /* PyObject cname: __pyx_n_u_main */
   {__pyx_k_module, sizeof(__pyx_k_module), 0, 1, 1}, /* PyObject cname: __pyx_n_u_module */
   {__pyx_k_name, sizeof(__pyx_k_name), 0, 1, 1}, /* PyObject cname: __pyx_n_u_name */
+  {__pyx_k_normalized, sizeof(__pyx_k_normalized), 0, 1, 1}, /* PyObject cname: __pyx_n_u_normalized */
   {__pyx_k_pop, sizeof(__pyx_k_pop), 0, 1, 1}, /* PyObject cname: __pyx_n_u_pop */
-  {__pyx_k_py_levenshtein_distance, sizeof(__pyx_k_py_levenshtein_distance), 0, 1, 1}, /* PyObject cname: __pyx_n_u_py_levenshtein_distance */
-  {__pyx_k_py_ortho_lev_dist, sizeof(__pyx_k_py_ortho_lev_dist), 0, 1, 1}, /* PyObject cname: __pyx_n_u_py_ortho_lev_dist */
   {__pyx_k_qualname, sizeof(__pyx_k_qualname), 0, 1, 1}, /* PyObject cname: __pyx_n_u_qualname */
   {__pyx_k_return, sizeof(__pyx_k_return), 0, 1, 1}, /* PyObject cname: __pyx_n_u_return */
   {__pyx_k_set_name, sizeof(__pyx_k_set_name), 0, 1, 1}, /* PyObject cname: __pyx_n_u_set_name */
   {__pyx_k_str, sizeof(__pyx_k_str), 0, 1, 1}, /* PyObject cname: __pyx_n_u_str */
   {__pyx_k_test, sizeof(__pyx_k_test), 0, 1, 1}, /* PyObject cname: __pyx_n_u_test */
-  {__pyx_k_word, sizeof(__pyx_k_word), 0, 1, 1}, /* PyObject cname: __pyx_n_u_word */
   {__pyx_k_word1, sizeof(__pyx_k_word1), 0, 1, 1}, /* PyObject cname: __pyx_n_u_word1 */
   {__pyx_k_word2, sizeof(__pyx_k_word2), 0, 1, 1}, /* PyObject cname: __pyx_n_u_word2 */
   {0, 0, 0, 0, 0}
@@ -3260,9 +3086,9 @@ static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
             unsigned int argcount : 2;
             unsigned int num_posonly_args : 1;
             unsigned int num_kwonly_args : 1;
-            unsigned int nlocals : 3;
+            unsigned int nlocals : 4;
             unsigned int flags : 10;
-            unsigned int first_line : 4;
+            unsigned int first_line : 3;
             unsigned int line_table_length : 11;
         } __Pyx_PyCode_New_function_description;
 /* NewCodeObj.proto */
@@ -3280,14 +3106,9 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   PyObject* tuple_dedup_map = PyDict_New();
   if (unlikely(!tuple_dedup_map)) return -1;
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 3, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 7, 32};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_word, __pyx_mstate->__pyx_n_u_encoded, __pyx_mstate->__pyx_n_u_c_name};
-    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_lingdist_pyx, __pyx_mstate->__pyx_n_u_py_ortho_lev_dist, __pyx_k_HA_WAQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
-  }
-  {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 6, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 12, 53};
-    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_word1, __pyx_mstate->__pyx_n_u_word2, __pyx_mstate->__pyx_n_u_e1, __pyx_mstate->__pyx_n_u_e2, __pyx_mstate->__pyx_n_u_c1, __pyx_mstate->__pyx_n_u_c2};
-    __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_lingdist_pyx, __pyx_mstate->__pyx_n_u_py_levenshtein_distance, __pyx_k_xq_E_E_q_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
+    const __Pyx_PyCode_New_function_description descr = {3, 0, 0, 8, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 6, 63};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_word1, __pyx_mstate->__pyx_n_u_word2, __pyx_mstate->__pyx_n_u_normalized, __pyx_mstate->__pyx_n_u_e1, __pyx_mstate->__pyx_n_u_e2, __pyx_mstate->__pyx_n_u_c3, __pyx_mstate->__pyx_n_u_c1, __pyx_mstate->__pyx_n_u_c2};
+    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_lingdist_pyx, __pyx_mstate->__pyx_n_u_levenshtein_distance, __pyx_k_Ya_E_E_1_T, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
   Py_DECREF(tuple_dedup_map);
   return 0;
@@ -6384,109 +6205,6 @@ bad:
 }
 #endif
 
-/* PyObjectVectorCallKwBuilder */
-#if CYTHON_VECTORCALL
-static int __Pyx_VectorcallBuilder_AddArg(PyObject *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
-    (void)__Pyx_PyObject_FastCallDict;
-    if (__Pyx_PyTuple_SET_ITEM(builder, n, key) != (0)) return -1;
-    Py_INCREF(key);
-    args[n] = value;
-    return 0;
-}
-CYTHON_UNUSED static int __Pyx_VectorcallBuilder_AddArg_Check(PyObject *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
-    (void)__Pyx_VectorcallBuilder_AddArgStr;
-    if (unlikely(!PyUnicode_Check(key))) {
-        PyErr_SetString(PyExc_TypeError, "keywords must be strings");
-        return -1;
-    }
-    return __Pyx_VectorcallBuilder_AddArg(key, value, builder, args, n);
-}
-static int __Pyx_VectorcallBuilder_AddArgStr(const char *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
-    PyObject *pyKey = PyUnicode_FromString(key);
-    if (!pyKey) return -1;
-    return __Pyx_VectorcallBuilder_AddArg(pyKey, value, builder, args, n);
-}
-#else // CYTHON_VECTORCALL
-CYTHON_UNUSED static int __Pyx_VectorcallBuilder_AddArg_Check(PyObject *key, PyObject *value, PyObject *builder, CYTHON_UNUSED PyObject **args, CYTHON_UNUSED int n) {
-    if (unlikely(!PyUnicode_Check(key))) {
-        PyErr_SetString(PyExc_TypeError, "keywords must be strings");
-        return -1;
-    }
-    return PyDict_SetItem(builder, key, value);
-}
-#endif
-
-/* CIntToPy */
-static CYTHON_INLINE PyObject* __Pyx_PyLong_From_int(int value) {
-#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wconversion"
-#endif
-    const int neg_one = (int) -1, const_zero = (int) 0;
-#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
-#pragma GCC diagnostic pop
-#endif
-    const int is_unsigned = neg_one > const_zero;
-    if (is_unsigned) {
-        if (sizeof(int) < sizeof(long)) {
-            return PyLong_FromLong((long) value);
-        } else if (sizeof(int) <= sizeof(unsigned long)) {
-            return PyLong_FromUnsignedLong((unsigned long) value);
-#if defined(HAVE_LONG_LONG) && !CYTHON_COMPILING_IN_PYPY
-        } else if (sizeof(int) <= sizeof(unsigned PY_LONG_LONG)) {
-            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
-#endif
-        }
-    } else {
-        if (sizeof(int) <= sizeof(long)) {
-            return PyLong_FromLong((long) value);
-#ifdef HAVE_LONG_LONG
-        } else if (sizeof(int) <= sizeof(PY_LONG_LONG)) {
-            return PyLong_FromLongLong((PY_LONG_LONG) value);
-#endif
-        }
-    }
-    {
-        unsigned char *bytes = (unsigned char *)&value;
-#if !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX >= 0x030d00A4
-        if (is_unsigned) {
-            return PyLong_FromUnsignedNativeBytes(bytes, sizeof(value), -1);
-        } else {
-            return PyLong_FromNativeBytes(bytes, sizeof(value), -1);
-        }
-#elif !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX < 0x030d0000
-        int one = 1; int little = (int)*(unsigned char *)&one;
-        return _PyLong_FromByteArray(bytes, sizeof(int),
-                                     little, !is_unsigned);
-#else
-        int one = 1; int little = (int)*(unsigned char *)&one;
-        PyObject *from_bytes, *result = NULL, *kwds = NULL;
-        PyObject *py_bytes = NULL, *order_str = NULL;
-        from_bytes = PyObject_GetAttrString((PyObject*)&PyLong_Type, "from_bytes");
-        if (!from_bytes) return NULL;
-        py_bytes = PyBytes_FromStringAndSize((char*)bytes, sizeof(int));
-        if (!py_bytes) goto limited_bad;
-        order_str = PyUnicode_FromString(little ? "little" : "big");
-        if (!order_str) goto limited_bad;
-        {
-            PyObject *args[3+(CYTHON_VECTORCALL ? 1 : 0)] = { NULL, py_bytes, order_str };
-            if (!is_unsigned) {
-                kwds = __Pyx_MakeVectorcallBuilderKwds(1);
-                if (!kwds) goto limited_bad;
-                if (__Pyx_VectorcallBuilder_AddArgStr("signed", __Pyx_NewRef(Py_True), kwds, args+3, 0) < 0) goto limited_bad;
-            }
-            result = __Pyx_Object_Vectorcall_CallFromBuilder(from_bytes, args+1, 2 | __Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET, kwds);
-        }
-        limited_bad:
-        Py_XDECREF(kwds);
-        Py_XDECREF(order_str);
-        Py_XDECREF(py_bytes);
-        Py_XDECREF(from_bytes);
-        return result;
-#endif
-    }
-}
-
 /* FormatTypeName */
 #if CYTHON_COMPILING_IN_LIMITED_API && __PYX_LIMITED_VERSION_HEX < 0x030d0000
 static __Pyx_TypeName
@@ -6523,6 +6241,38 @@ __Pyx_PyType_GetFullyQualifiedName(PyTypeObject* tp)
         result = __Pyx_NewRef(__pyx_mstate_global->__pyx_kp_u_);
     }
     goto done;
+}
+#endif
+
+/* PyObjectVectorCallKwBuilder */
+#if CYTHON_VECTORCALL
+static int __Pyx_VectorcallBuilder_AddArg(PyObject *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
+    (void)__Pyx_PyObject_FastCallDict;
+    if (__Pyx_PyTuple_SET_ITEM(builder, n, key) != (0)) return -1;
+    Py_INCREF(key);
+    args[n] = value;
+    return 0;
+}
+CYTHON_UNUSED static int __Pyx_VectorcallBuilder_AddArg_Check(PyObject *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
+    (void)__Pyx_VectorcallBuilder_AddArgStr;
+    if (unlikely(!PyUnicode_Check(key))) {
+        PyErr_SetString(PyExc_TypeError, "keywords must be strings");
+        return -1;
+    }
+    return __Pyx_VectorcallBuilder_AddArg(key, value, builder, args, n);
+}
+static int __Pyx_VectorcallBuilder_AddArgStr(const char *key, PyObject *value, PyObject *builder, PyObject **args, int n) {
+    PyObject *pyKey = PyUnicode_FromString(key);
+    if (!pyKey) return -1;
+    return __Pyx_VectorcallBuilder_AddArg(pyKey, value, builder, args, n);
+}
+#else // CYTHON_VECTORCALL
+CYTHON_UNUSED static int __Pyx_VectorcallBuilder_AddArg_Check(PyObject *key, PyObject *value, PyObject *builder, CYTHON_UNUSED PyObject **args, CYTHON_UNUSED int n) {
+    if (unlikely(!PyUnicode_Check(key))) {
+        PyErr_SetString(PyExc_TypeError, "keywords must be strings");
+        return -1;
+    }
+    return PyDict_SetItem(builder, key, value);
 }
 #endif
 
